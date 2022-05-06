@@ -1,0 +1,28 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: oss-scan
+spec:
+  taskSpec:
+    steps:
+    - name: oss-scan
+      image: aquasec/trivy:0.26.0
+      volumeMounts:
+        - name: my-volume-oss
+          mountPath: /results
+      args:
+      - "image"
+      - "-o"
+      - "/results/oss-scan-report.json"
+      - "python:3.4-alpine"
+      
+    - name: oss-github-push-step
+      image: rounak007/oss-github-push
+      volumeMounts:
+      - name: my-volume-oss
+        mountPath: /results
+    volumes:
+      - name: my-volume-oss
+        emptyDir: {}
+
+
