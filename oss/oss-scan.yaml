@@ -17,7 +17,7 @@ spec:
       - "python:3.4-alpine"
       
     - name: oss-github-push-step
-      image: rounak007/oss-github-push
+      image: rounak007/dockerfile-for-github-push
       volumeMounts:
       - name: my-volume-oss
         mountPath: /results
