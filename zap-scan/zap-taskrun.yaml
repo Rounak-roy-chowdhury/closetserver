@@ -20,7 +20,7 @@ spec:
       - "-x"
       - "report_xml.xml"
     - name: github-push-step
-      image: rounak007/github-push-image-repo
+      image: rounak007/dockerfile-for-github-push
       volumeMounts:
         - name: my-volume
           mountPath: /results
