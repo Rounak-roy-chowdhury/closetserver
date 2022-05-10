@@ -12,7 +12,7 @@ spec:
           mountPath: /results
 
     - name: inspec-github-push-step
-      image: rounak007/inspec-github-push
+      image: rounak007/dockerfile-for-github-push
       volumeMounts:
       - name: my-volume-inspec
         mountPath: /results
