@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: inspec-scan
+spec:
+  taskSpec:
+    steps:
+    - name: inspec-scan
+      image: 
+      volumeMounts:
+        - name: my-volume-inspec
+          mountPath: /results
+
+    - name: inspec-github-push-step
+      image: rounak007/inspec-github-push
+      volumeMounts:
+      - name: my-volume-inspec
+        mountPath: /results
+    volumes:
+      - name: my-volume-inspec
+        emptyDir: {}
+
